@@ -12,8 +12,7 @@ Factory.add('Stars', Stars);
 
 var app = new GameEngine(new Loop(20), document.getElementById('GameContainer'));
 
-app.createEntity('Stars');
-
+// enemies
 var ship1 = app.createEntity('Ship');
 var ship2 = app.createEntity('Ship');
 
@@ -23,9 +22,13 @@ ship1.y -= 100;
 ship2.x += 100;
 ship2.y += 100;
 
+// player
 var player = app.createEntity('Player');
 
 player.x -= 100;
 player.y += 100;
+
+// stars background
+app.createEntity('Stars');
 
 app.start();
