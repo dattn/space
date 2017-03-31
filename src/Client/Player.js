@@ -16,6 +16,7 @@ export default class Player extends Ship {
         }
         // move
         if (this.app.keyboard.isDown(38)) {
+            this.showFlame = true;
             Body.applyForce(this.physicsBody, {
                 x: this.x,
                 y: this.y
