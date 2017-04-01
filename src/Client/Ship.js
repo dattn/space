@@ -6,19 +6,19 @@ export default class Ship extends CommonShip {
     constructor(app) {
         super(app);
 
-        this.sprite = PIXI.Sprite.fromImage('ship.png');
+        this.sprite = PIXI.Sprite.fromImage('images/ship.png');
         this.sprite.anchor.set(0.5);
         this.sprite.scale.x = 0.5;
         this.sprite.scale.y = 0.5;
 
-        this.flame1 = PIXI.Sprite.fromImage('flame.png');
+        this.flame1 = PIXI.Sprite.fromImage('images/flame.png');
         this.flame1.anchor.set(0.5, 0);
         this.flame1.scale.x = 0.5;
         this.flame1.scale.y = 0.5;
         this.flame1.pivot.x = 30;
         this.flame1.pivot.y = -80;
 
-        this.flame2 = PIXI.Sprite.fromImage('flame.png');
+        this.flame2 = PIXI.Sprite.fromImage('images/flame.png');
         this.flame2.anchor.set(0.5, 0);
         this.flame2.scale.x = 0.5;
         this.flame2.scale.y = 0.5;

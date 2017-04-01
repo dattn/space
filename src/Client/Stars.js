@@ -8,18 +8,45 @@ export default class Stars extends Entity {
 
         this.layer = this.app.createLayer(0);
 
-        this.tilingSprite = new PIXI.TilingSprite(
-            PIXI.Texture.fromImage('background.jpg'),
+        this.stars1 = new PIXI.extras.TilingSprite(
+            PIXI.Texture.fromImage('images/stars1.png'),
             this.app.renderer.width,
             this.app.renderer.height
         );
+        this.stars1.tileScale.x = 1.2;
+        this.stars1.tileScale.y = 1.2;
 
-        this.layer.addChild(this.tilingSprite);
+        this.stars2 = new PIXI.extras.TilingSprite(
+            PIXI.Texture.fromImage('images/stars2.png'),
+            this.app.renderer.width,
+            this.app.renderer.height
+        );
+        this.stars2.tileScale.x = 1.2;
+        this.stars2.tileScale.y = 1.2;
+
+        this.nebula = new PIXI.extras.TilingSprite(
+            PIXI.Texture.fromImage('images/nebula.png'),
+            this.app.renderer.width,
+            this.app.renderer.height
+        );
+        this.nebula.tileScale.x = 5;
+        this.nebula.tileScale.y = 5;
+        this.nebula.blendMode = PIXI.BLEND_MODES.ADD;
+
+        this.layer.addChild(this.stars1);
+        this.layer.addChild(this.stars2);
+        this.layer.addChild(this.nebula);
     }
 
     render() {
-        this.tilingSprite.tilePosition.x = this.app.stage.position.x / 4;
-        this.tilingSprite.tilePosition.y = this.app.stage.position.y / 4;
+        this.stars1.tilePosition.x = this.app.stage.position.x / 60;
+        this.stars1.tilePosition.y = this.app.stage.position.y / 60;
+
+        this.stars2.tilePosition.x = this.app.stage.position.x / 35;
+        this.stars2.tilePosition.y = this.app.stage.position.y / 35;
+
+        this.nebula.tilePosition.x = this.app.stage.position.x / 9;
+        this.nebula.tilePosition.y = this.app.stage.position.y / 9;
     }
 
 }
