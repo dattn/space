@@ -37,7 +37,6 @@ export default class Ship extends CommonShip {
         this.app.stage.addChild(this.shield);
 
         this.shieldVisible = 0;
-        this.showFlame = false;
     }
 
     update() {
