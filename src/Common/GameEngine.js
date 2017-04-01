@@ -1,6 +1,8 @@
 import PhysicsEngine from './PhysicsEngine';
 import Factory from './Factory';
 
+var nextEntityID = 1;
+
 export default class GameEngine {
 
     constructor(loop) {
@@ -12,7 +14,14 @@ export default class GameEngine {
     }
 
     createEntity(entityName) {
+        var ID = nextEntityID;
+        nextEntityID++;
+
         var entity = Factory.create(entityName, this);
+
+        entity.ID = ID;
+        entity.label = entityName + '_' + ID;
+        
         this.entities.push(entity);
         return entity;
     }

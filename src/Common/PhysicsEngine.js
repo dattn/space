@@ -19,8 +19,11 @@ export default class PhysicsEngine {
 
     createBody(entity, type) {
         var body = Bodies[type].apply(Bodies, [...arguments].slice(2));
+
         entity.physicsBody = body;
         body.userData = { entity };
+        body.label = entity.label;
+
         World.add(this.world, body);
         return body;
     }
