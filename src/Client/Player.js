@@ -1,29 +1,18 @@
 import Ship from './Ship';
-import { Body } from 'matter-js';
 
 export default class Player extends Ship {
 
     update() {
         super.update();
 
-        // left
         if (this.app.keyboard.isDown(37)) {
-            Body.rotate(this.physicsBody, -(Math.PI / 20));
+            this.turnLeft();
         }
-        // right
         if (this.app.keyboard.isDown(39)) {
-            Body.rotate(this.physicsBody, Math.PI / 20);
+            this.turnRight();
         }
-        // move
         if (this.app.keyboard.isDown(38)) {
-            this.showFlame = true;
-            Body.applyForce(this.physicsBody, {
-                x: this.x,
-                y: this.y
-            }, {
-                x: Math.cos(this.angle) * 0.005,
-                y: Math.sin(this.angle) * 0.005
-            });
+            this.accelerate();
         }
     }
 

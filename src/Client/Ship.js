@@ -43,8 +43,6 @@ export default class Ship extends CommonShip {
     update() {
         super.update();
 
-        this.showFlame = false;
-
         if (this.shieldVisible > 0) {
             this.shieldVisible--;
         }
@@ -60,12 +58,12 @@ export default class Ship extends CommonShip {
         this.flame1.x = this.sprite.x;
         this.flame1.y = this.sprite.y;
         this.flame1.rotation = this.sprite.rotation + Math.PI;
-        this.flame1.visible = this.showFlame;
+        this.flame1.visible = this.accelerating;
 
         this.flame2.x = this.sprite.x;
         this.flame2.y = this.sprite.y;
         this.flame2.rotation = this.sprite.rotation + Math.PI;
-        this.flame2.visible = this.showFlame;
+        this.flame2.visible = this.accelerating;
 
         this.shield.position.x = this.sprite.x;
         this.shield.position.y = this.sprite.y;

@@ -39,14 +39,14 @@ export default class Stars extends Entity {
     }
 
     render() {
-        this.stars1.tilePosition.x = this.app.stage.position.x / 60;
-        this.stars1.tilePosition.y = this.app.stage.position.y / 60;
+        this.stars1.tilePosition.x = this.app.stage.position.x / 50;
+        this.stars1.tilePosition.y = this.app.stage.position.y / 50;
 
-        this.stars2.tilePosition.x = this.app.stage.position.x / 35;
-        this.stars2.tilePosition.y = this.app.stage.position.y / 35;
+        this.stars2.tilePosition.x = this.app.stage.position.x / 30;
+        this.stars2.tilePosition.y = this.app.stage.position.y / 30;
 
-        this.nebula.tilePosition.x = this.app.stage.position.x / 9;
-        this.nebula.tilePosition.y = this.app.stage.position.y / 9;
+        this.nebula.tilePosition.x = this.app.stage.position.x / 5;
+        this.nebula.tilePosition.y = this.app.stage.position.y / 5;
     }
 
 }
