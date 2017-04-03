@@ -1,5 +1,11 @@
 import { Engine, World, Events, Bodies } from 'matter-js';
 
+var stateProps = [
+    'angle', 'anglePrev',
+    'position', 'positionPrev',
+    'velocity'
+];
+
 export default class PhysicsEngine {
 
     constructor() {
@@ -47,6 +53,21 @@ export default class PhysicsEngine {
                 dataB.entity.onCollision(dataA.entity || null, collision);
             }
         });
+    }
+
+    getState(entity) {
+        if (!entity.physicsBody) {
+            return null;
+        }
+
+        var state = {};
+        stateProps.forEach(prop => {
+            state[prop] = entity.physicsBody[prop];
+        });
+
+        return {
+            ...entity.physicsBody
+        };
     }
 
 }

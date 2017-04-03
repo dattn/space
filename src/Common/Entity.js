@@ -62,4 +62,14 @@ export default class Entity {
         };
     }
 
+    getState() {
+        var state = {
+            x: this.x,
+            y: this.y,
+            angle: this.angle,
+            physics: this.app.physics.getState(this)
+        };
+        return state;
+    }
+
 }

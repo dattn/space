@@ -10,6 +10,10 @@ export default class GameEngine {
         this.physics = new PhysicsEngine();
         this.entities = [];
 
+        this.states = [];
+        this.maxStateCount = 100;
+        this.updateStep = 0;
+
         this.loop.on('update', this.update.bind(this));
     }
 
@@ -20,8 +24,9 @@ export default class GameEngine {
         var entity = Factory.create(entityName, this);
 
         entity.ID = ID;
+        entity.name = entityName;
         entity.label = entityName + '_' + ID;
-        
+
         this.entities.push(entity);
         return entity;
     }
@@ -43,12 +48,44 @@ export default class GameEngine {
     }
 
     update() {
+        this.updateStep++;
+        var updateData = {
+            step: this.updateStep
+        };
+
         this.entities.forEach(entity => {
             if (entity.update) {
-                entity.update();
+                entity.update(updateData);
             }
         });
-        this.physics.update();
+        this.physics.update(updateData);
+
+        this._saveState();
+    }
+
+    _saveState() {
+        var state = {
+            step: this.updateStep,
+            entities: []
+        };
+
+        this.entities.forEach(entity => {
+            var entityData = {
+                ID: entity.ID,
+                name: entity.name,
+                state: entity.getState()
+            };
+            state.entities.push(entityData);
+        });
+
+        this.states.push(state);
+        if (this.states.length > this.maxStateCount) {
+            this.states.splice(0, this.states.length - this.maxStateCount);
+        }
+
+        console.log(this.states.length, state.entities);
+
+        return state;
     }
 
     start() {
